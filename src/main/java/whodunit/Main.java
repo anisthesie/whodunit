@@ -1,6 +1,7 @@
 package whodunit;
 
 import whodunit.game.Card;
+import whodunit.game.CardType;
 import whodunit.game.Model;
 import whodunit.players.ComputerPlayer;
 import whodunit.players.HumanPlayer;
@@ -10,23 +11,23 @@ import java.util.*;
 
 public class Main {
 
-    private static final List<Card> allLocations = Arrays.asList(
-            new Card(Card.Type.Location, "hallway"), new Card(Card.Type.Location, "washroom"),
-            new Card(Card.Type.Location, "bedroom"), new Card(Card.Type.Location, "garden"),
-            new Card(Card.Type.Location, "kitchen"), new Card(Card.Type.Location, "terrace"),
-            new Card(Card.Type.Location, "living room"), new Card(Card.Type.Location, "garage")
+    public static final List<Card> allLocations = Arrays.asList(
+            new Card(CardType.Location, "hallway"), new Card(CardType.Location, "washroom"),
+            new Card(CardType.Location, "bedroom"), new Card(CardType.Location, "garden"),
+            new Card(CardType.Location, "kitchen"), new Card(CardType.Location, "terrace"),
+            new Card(CardType.Location, "living room"), new Card(CardType.Location, "garage")
     );
-    private static final List<Card> allSuspects = Arrays.asList(
-            new Card(Card.Type.Suspect, "jack"), new Card(Card.Type.Suspect, "donald"),
-            new Card(Card.Type.Suspect, "daniel"), new Card(Card.Type.Suspect, "elon"),
-            new Card(Card.Type.Suspect, "john"), new Card(Card.Type.Suspect, "sarah"),
-            new Card(Card.Type.Suspect, "suzan"), new Card(Card.Type.Suspect, "marie")
+    public static final List<Card> allSuspects = Arrays.asList(
+            new Card(CardType.Suspect, "jack"), new Card(CardType.Suspect, "donald"),
+            new Card(CardType.Suspect, "daniel"), new Card(CardType.Suspect, "elon"),
+            new Card(CardType.Suspect, "john"), new Card(CardType.Suspect, "sarah"),
+            new Card(CardType.Suspect, "suzan"), new Card(CardType.Suspect, "marie")
     );
-    private static final List<Card> allWeapons = Arrays.asList(
-            new Card(Card.Type.Weapon, "gun"), new Card(Card.Type.Weapon, "sword"),
-            new Card(Card.Type.Weapon, "knife"), new Card(Card.Type.Weapon, "axe"),
-            new Card(Card.Type.Weapon, "taser"), new Card(Card.Type.Weapon, "poison"),
-            new Card(Card.Type.Weapon, "archery"), new Card(Card.Type.Weapon, "baseball bat")
+    public static final List<Card> allWeapons = Arrays.asList(
+            new Card(CardType.Weapon, "gun"), new Card(CardType.Weapon, "sword"),
+            new Card(CardType.Weapon, "knife"), new Card(CardType.Weapon, "axe"),
+            new Card(CardType.Weapon, "taser"), new Card(CardType.Weapon, "poison"),
+            new Card(CardType.Weapon, "archery"), new Card(CardType.Weapon, "baseball bat")
     );
 
     public static void main(String[] args) {

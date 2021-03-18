@@ -1,10 +1,10 @@
 package whodunit.players;
 
 import whodunit.game.Card;
+import whodunit.game.CardType;
 import whodunit.game.Guess;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static whodunit.Main.getInput;
@@ -62,7 +62,7 @@ public class HumanPlayer implements IPlayer {
         }
         if (input.equalsIgnoreCase("y")) {
             System.out.println("What card would you like to show him ? : ");
-            String card = getInput();
+            String card = "";
             while (!hasCard(card)) {
                 card = getInput();
                 if (!hasCard(card)) {
@@ -101,7 +101,7 @@ public class HumanPlayer implements IPlayer {
         System.out.println("Which person do you suggest? : ");
         Card suspect = null;
         while (suspect == null) {
-            suspect = getFromAllCards(getInput(), Card.Type.Suspect);
+            suspect = getFromAllCards(getInput(), CardType.Suspect);
             if (suspect == null) {
                 System.out.println("Invalid person. The persons are: ");
                 for (int i = 0; i < suspects.size(); i++)
@@ -112,7 +112,7 @@ public class HumanPlayer implements IPlayer {
         System.out.println("Which place do you suggest? : ");
         Card place = null;
         while (place == null) {
-            place = getFromAllCards(getInput(), Card.Type.Location);
+            place = getFromAllCards(getInput(), CardType.Location);
             if (place == null) {
                 System.out.println("Invalid location. The locations are: ");
                 for (int i = 0; i < places.size(); i++)
@@ -123,7 +123,7 @@ public class HumanPlayer implements IPlayer {
         System.out.println("Which weapon do you suggest? : ");
         Card weapon = null;
         while (weapon == null) {
-            weapon = getFromAllCards(getInput(), Card.Type.Weapon);
+            weapon = getFromAllCards(getInput(), CardType.Weapon);
             if (weapon == null) {
                 System.out.println("Invalid weapon. The persons are: ");
                 for (int i = 0; i < weapons.size(); i++)
@@ -143,7 +143,7 @@ public class HumanPlayer implements IPlayer {
         return new Guess(suspect, place, weapon, accusation);
     }
 
-    private Card getFromAllCards(String value, Card.Type type) {
+    private Card getFromAllCards(String value, CardType type) {
         switch (type) {
             case Weapon:
                 for (Card c : weapons) {

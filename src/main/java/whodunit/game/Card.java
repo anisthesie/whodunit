@@ -2,15 +2,15 @@ package whodunit.game;
 
 public class Card {
 
-    private final Type type;
+    private final CardType type;
     private final String value;
 
-    public Card(Type type, String value) {
+    public Card(CardType type, String value) {
         this.type = type;
         this.value = value;
     }
 
-    public Type getType() {
+    public CardType getType() {
         return type;
     }
 
@@ -23,7 +23,4 @@ public class Card {
         return value;
     }
 
-    public enum Type {
-        Location, Suspect, Weapon
-    }
 }

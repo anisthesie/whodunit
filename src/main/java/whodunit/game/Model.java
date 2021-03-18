@@ -111,6 +111,10 @@ public class Model {
         return cards[1];
     }
 
+    public Guess getSolution() {
+        return solution;
+    }
+
     public List<Card> getWeapons() {
         return cards[2];
     }

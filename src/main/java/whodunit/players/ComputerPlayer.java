@@ -15,6 +15,7 @@ public class ComputerPlayer implements IPlayer {
     private ArrayList<Card> currentSuspects = new ArrayList<>(),
             currentPlaces = new ArrayList<>(),
             currentWeapons = new ArrayList<>();
+    private int it = 0;
 
     @Override
     public void setUp(int numPlayers, int index, ArrayList<Card> ppl, ArrayList<Card> places, ArrayList<Card> weapons) {
@@ -58,10 +59,11 @@ public class ComputerPlayer implements IPlayer {
 
     @Override
     public Guess getGuess() {
-        Card where = currentPlaces.get(0);
-        Card who = currentSuspects.get(0);
-        Card how = currentWeapons.get(0);
+        Card where = currentPlaces.get(it == 0 ? 0 : (it + 1) % currentPlaces.size());
+        Card who = currentSuspects.get(it == 0 ? 0 : (it + 1) % currentSuspects.size());
+        Card how = currentWeapons.get(it == 0 ? 0 : (it + 1) % currentWeapons.size());
         boolean accusation = (currentWeapons.size() + currentSuspects.size() + currentPlaces.size()) == 3;
+        it++;
         return new Guess(who, where, how, accusation);
     }
 
@@ -75,13 +77,13 @@ public class ComputerPlayer implements IPlayer {
     private void ignoreCard(Card c) {
         switch (c.getType()) {
             case Weapon:
-                currentWeapons.remove(c);
+                currentWeapons.removeIf(w -> w.getValue().equalsIgnoreCase(c.getValue()));
                 break;
             case Suspect:
-                currentSuspects.remove(c);
+                currentSuspects.removeIf(w -> w.getValue().equalsIgnoreCase(c.getValue()));
                 break;
             case Location:
-                currentPlaces.remove(c);
+                currentPlaces.removeIf(w -> w.getValue().equalsIgnoreCase(c.getValue()));
                 break;
         }
     }
@@ -101,4 +103,7 @@ public class ComputerPlayer implements IPlayer {
         return getCard(card) != null;
     }
 
+    public List<Card> getCards() {
+        return cards;
+    }
 }
